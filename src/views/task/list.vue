@@ -4,7 +4,7 @@
     <div class="title flex flex-between flex-vcenter ptb-10 pull-left">
       <span class="fs-20 font-bold">{{$t('task.Task List')}}</span>
       <span class="ml-5 fc-green fs-14">( {{$t('task.Running Task Num')}} {{runningTaskNum}} )</span>
-    </div
+    </div>
     <section class="mb-20" v-if="isLoaded">
       <vxe-toolbar zoom custom class="pull-right">
         <template #buttons>
@@ -124,6 +124,7 @@ export default {
     },
     listData() {
       const { searchKey, sort: { property, order }, lang } = this;
+      if (!this.tableData) return [];
       const result = this.tableData
         .filter(x => {
           let flag = true;
@@ -210,7 +211,7 @@ export default {
         });
 
       this.tableData = entity;
-      if (entity.filter(task => !['Success', 'Failed'].includes(task.Status)).length === 0) {
+      if (entity && entity.filter(task => !['Success', 'Failed'].includes(task.Status)).length === 0) {
         this.timerId && clearInterval(this.timerId);
       }
     },

@@ -1,5 +1,4 @@
 <template>
-  <!-- 测试 -->
   <section class="home">
     <section class="flex flex-wrap">
       <div class="flex-1">
@@ -182,14 +181,15 @@ export default {
 }
 .btns {
   width: 300px;
-  .el-button {
-    margin: 0;
-    height: 42px;
-  }
 }
-// .list {
-//   ::v-deep .header-cell-class-name {
-//     background: var(--primary-color);
-//   }
-// }
+.el-button {
+  margin: 0;
+  height: 42px;
+}
+
+/* .list {
+   ::v-deep .header-cell-class-name {
+     background: var(--primary-color);
+   }
+ } */
 </style>
