@@ -24,6 +24,12 @@ export const Menus = Object.freeze([
     name: 'Settings',
   },
 ]);
+export const QueryMenus = Object.freeze([
+  {
+    path: 'query-execution',
+    name: 'Query Execution',
+  },
+]);
 export const LoaderMenus = Object.freeze([
   {
     path: 'overview',

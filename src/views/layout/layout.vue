@@ -50,15 +50,16 @@
   </div>
 </template>
 <script>
-import { Menus, LoaderMenus } from "@/constants";
+import { Menus, LoaderMenus, QueryMenus } from "@/constants";
 import { PackageApi, ClusterApi, TaskApi } from "@/apis";
 
 export default {
   name: "Layout",
   data() {
     return {
-      menus: Menus,
+      menus: QueryMenus,
       user: "",
+      role: "",
       version: "",
       mode: '',
       currentMenu: '',
@@ -68,6 +69,7 @@ export default {
   },
   mounted() {
     this.user = JSON.parse(localStorage.getItem("user") || "{}").username;
+    this.role = JSON.parse(localStorage.getItem("user") || "{}").role;
     this.fetchVersion();
   },
 
@@ -123,7 +125,9 @@ export default {
   watch: {
     $route: {
       handler(route, prevRoute) {
-        this.menus = route.meta === "loader" ? LoaderMenus : Menus;
+        // loader -> LoaderMenus
+        // 根据不同的角色展示不同的菜单, 0 -> 管理员
+        this.menus = route.meta === "loader" ? LoaderMenus : this.role === 0 ? Menus : QueryMenus;
         this.onChangeCluster();
       },
       immediate: true,
