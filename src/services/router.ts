@@ -47,7 +47,7 @@ export const $router = new Router({
         {
           path: '/clusters/:id',
           component: ChildViewHolder,
-          redirect: '/clusters/:id/overview',
+          redirect: '/clusters/:id/query-execution',
           children:[
             {
               path: 'overview',

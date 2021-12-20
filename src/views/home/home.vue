@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <section class="flex flex-wrap">
+    <section class="flex flex-wrap" v-if="this.role === 0">
       <div class="flex-1">
         <div class="title flex flex-column mb-30">
           <p class="mb-5"
@@ -25,7 +25,7 @@
 
     <div class="list mt-50">
       <div class="font-bold mb-10 fs-18 overflow-hidden">{{$t('home.All ClickHouse Clusters')}}
-        
+
         <el-input v-model="key"
           :placeholder="$t('common.keyword search')"
           autocomplete="false"
@@ -89,6 +89,7 @@ export default {
       list: [],
       versionOptions: [],
       key: '',
+      role: 1,
     };
   },
   computed: {
@@ -104,6 +105,7 @@ export default {
     }
   },
   mounted() {
+    this.role = JSON.parse(localStorage.getItem("user") || "{}").role;
     this.fetchVersionData();
     this.fetchData();
   },

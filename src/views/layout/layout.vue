@@ -20,7 +20,7 @@
             <el-dropdown-item @click.native="logout">{{$t("common.Logout")}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-  
+
         <router-link to="/setting" class="fa fa-gear fs-20 pointer ml-15"><span class="fs-16 ml-5">{{$t('layout.Settings')}}</span></router-link>
 
         <el-select v-model="$i18n.locale" class="ml-10 width-100" size="mini">
